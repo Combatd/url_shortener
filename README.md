@@ -12,3 +12,9 @@ though we can use the launchy gem to pop open the original URL in a browser.
 * Be able to write both database constraints and model-level validations
 * Be able to write associations
 * Understand the purpose of adding an index to columns in our database
+
+### Phase 0: Setup
+
+``` rails new url_shortener --database=postgresql ```
+
+``` bundle exec rails db:create  ```
