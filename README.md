@@ -18,3 +18,7 @@ though we can use the launchy gem to pop open the original URL in a browser.
 ``` rails new url_shortener --database=postgresql ```
 
 ``` bundle exec rails db:create  ```
+
+### Phase 1: Users
+
+``` bundle exec rails generate migration CreateUsers ``` 
