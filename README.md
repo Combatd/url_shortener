@@ -24,3 +24,5 @@ though we can use the launchy gem to pop open the original URL in a browser.
 ``` bundle exec rails generate migration CreateUsers ``` 
 
 The users table will have columns for timestamps and email.
+
+``` bundle exec rails db:migrate ```
