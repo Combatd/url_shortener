@@ -13,5 +13,11 @@ class ShortenedUrl < ApplicationRecord
 
         return new_url
     end
-    
+
+    def self.generate_short_url(user, long_url)
+        ShortenedUrl.create!(
+           
+        )
+    end
+
 end

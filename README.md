@@ -27,4 +27,5 @@ The users table will have columns for timestamps and email.
 
 ``` bundle exec rails db:migrate ```
 
-A user.rb file should be in the app/models folder.
+* A user.rb file should be in the app/models folder.
+* Uniqueness and presence validations for user model
