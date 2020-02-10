@@ -40,4 +40,8 @@ class ShortenedUrl < ApplicationRecord
         self.visits.count
     end
 
+    def num_uniques
+        self.visitors.count
+    end
+
 end
