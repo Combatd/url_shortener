@@ -50,7 +50,7 @@ class ShortenedUrl < ApplicationRecord
     end
 
     def num_recent_uniques
-
+        self.visits.select(:id).distinct.where("visits.updated_at > ?", 10.minutes.ago).count
     end
 
 end
