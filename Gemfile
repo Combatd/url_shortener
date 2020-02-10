@@ -49,6 +49,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
+  # launchy gem allows for CLI user input
+  gem 'launchy'
+
   # Run 'bundle exec annotate' in Terminal to add helpful comments to models.
   gem 'annotate'
 
