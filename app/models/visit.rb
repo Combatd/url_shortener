@@ -7,7 +7,7 @@ class Visit < ApplicationRecord
         class_name: :User
     )
 
-    belongs_to ( :short_url,
+    belongs_to( :short_url,
         primary_key: :short_url,
         foreign_key: :shortened_url,
         class_name: :Shortenedurl
