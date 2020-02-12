@@ -8,3 +8,10 @@ end
 def find_user_by_email(email)
     User.find_by_email(email)
 end
+
+def ask_for_task
+    puts 'Please choose what you want to do'
+    puts '0. Create shortened URL'
+    puts '1. Visit shortened URL'
+    response = gets.chomp
+end
