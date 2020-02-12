@@ -30,3 +30,5 @@ though we can use the launchy gem to pop open the original URL in a browser.
 
 * A user.rb file should be in the app/models folder.
 * Uniqueness and presence validations for user model
+
+### Phase 2: ShortenedUrl
