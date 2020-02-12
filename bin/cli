@@ -4,3 +4,7 @@ def ask_for_email
     puts 'Input your email: '
     response = gets.chomp
 end
+
+def find_user_by_email(email)
+    User.find_by_email(email)
+end
