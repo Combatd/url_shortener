@@ -15,3 +15,11 @@ def ask_for_task
     puts '1. Visit shortened URL'
     response = gets.chomp
 end
+
+def create_or_visit(user)
+    if ask_for_task == '0'
+        create_short_url(user)
+    else
+        visit_short_url(user)
+    end
+end
