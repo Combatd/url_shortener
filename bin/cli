@@ -1,1 +1,6 @@
 #!/usr/bin/env ruby
+
+def ask_for_email
+    puts 'Input your email: '
+    response = gets.chomp
+end
