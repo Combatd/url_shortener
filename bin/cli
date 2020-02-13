@@ -23,3 +23,8 @@ def create_or_visit(user)
         visit_short_url(user)
     end
 end
+
+def create_short_url(user)
+    url = ShortenedUrl.generate_short_url(user, ask_for_long_url)
+    puts "The short url is #{url.short_url}"
+end
