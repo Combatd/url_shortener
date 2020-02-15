@@ -32,3 +32,8 @@ though we can use the launchy gem to pop open the original URL in a browser.
 * Uniqueness and presence validations for user model
 
 ### Phase 2: ShortenedUrl
+
+#### ShortenedUrl class Methods
+* #num_clicks
+* #num_uniques
+* #num_recent_uniques
