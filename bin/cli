@@ -40,3 +40,8 @@ def ask_for_long_url
     puts "Type in your long URL"
     response = gets.chomp
 end
+
+def ask_for_short_url
+    puts "Type in the short URL that you want to visit"
+    response = gets.chomp
+end
