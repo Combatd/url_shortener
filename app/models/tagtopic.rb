@@ -1,3 +1,10 @@
+# Table name: tag_topics
+#
+#  id         :bigint           not null, primary key
+#  topic      :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+
 class TagTopic < ApplicationRecord
     validates :topic, uniqueness: true
     validates :topic, presence: true
@@ -12,5 +19,13 @@ class TagTopic < ApplicationRecord
     through: :taggings, 
     source: :short_url
     )
-    
+   
+    # TagTopic#popular_links that returns the 5 most visited links for that TagTopic along with the number of times each link has been clicked.
+
+    def popular_links
+        short_urls.joins
+
+        limit(5)
+    end
+
 end
