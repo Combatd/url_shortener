@@ -55,3 +55,5 @@ def run
     # proceed based on return value of ask_for_task
     create_or_visit(user)
 end
+
+run
