@@ -1,6 +1,9 @@
 class TagTopic < ApplicationRecord
-    validates :tag_topic_id, :url_id, uniqueness: true
-    validates :tag_topic_id, :url_id, presence: true
+    validates :topic, uniqueness: true
+    validates :topic, presence: true
 
+    has_many :short_urls, 
+    through: :taggings, 
+    source: :short_url
 
 end
