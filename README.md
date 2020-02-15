@@ -37,3 +37,47 @@ though we can use the launchy gem to pop open the original URL in a browser.
 * #num_clicks
 * #num_uniques
 * #num_recent_uniques
+
+### Phase 4: Simple Command Line Interface CLI
+
+The CLI will look something like the following:
+```
+~/repos/appacademy/URLShortener$ rails runner bin/cli
+
+Input your email:
+> ned@appacademy.io
+
+What do you want to do?
+0. Create shortened URL
+1. Visit shortened URL
+> 0
+
+Type in your long url
+> http://www.appacademy.io
+
+Short url is: Pm6T7vWIhTWfMzLaT02YHQ
+Goodbye!
+
+~/repos/appacademy/URLShortener$ rails runner bin/cli
+
+Input your email:
+> ned@appacademy.io
+
+What do you want to do?
+0. Create shortened URL
+1. Visit shortened URL
+> 1
+
+Type in the shortened URL
+> Pm6T7vWIhTWfMzLaT02YHQ
+
+Launching http://www.appacademy.io ...
+Goodbye!
+
+~/repos/appacademy/URLShortener$ rails c
+Loading development environment (Rails 3.2.11)
+1.9.3-p448 :001 > ShortenedUrl.find_by(short_url: "Pm6T7vWIhTWfMzLaT02YHQ").visits
+  ShortenedUrl Load (0.1ms)  SELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."short_url" = 'Pm6T7vWIhTWfMzLaT02YHQ' LIMIT 1
+  Visit Load (0.1ms)  SELECT "visits".* FROM "visits" WHERE "visits"."shortened_url_id" = 1
+ => [#<Visit id: 1, user_id: 1, shortened_url_id: 1, created_at: "2013-08-18 19:15:55", updated_at: "2013-08-18 19:15:55">]
+```
