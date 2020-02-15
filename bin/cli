@@ -45,3 +45,13 @@ def ask_for_short_url
     puts "Type in the short URL that you want to visit"
     response = gets.chomp
 end
+
+# run method will callback the required methods
+def run
+    # enter user email first
+    email = ask_for_email
+    # match the email to the user
+    user = find_user_by_email(email)
+    # proceed based on return value of ask_for_task
+    create_or_visit(user)
+end
