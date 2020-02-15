@@ -23,8 +23,11 @@ class TagTopic < ApplicationRecord
     # TagTopic#popular_links that returns the 5 most visited links for that TagTopic along with the number of times each link has been clicked.
 
     def popular_links
-        short_urls.joins
-
+        short_urls.joins(visits),
+        group(id),
+        order('COUNT(visitors.visitor_id),
+            DESC'),
+        select('short_url, COUNT(visitors.visitor_id) AS number_of_visits'),
         limit(5)
     end
 
