@@ -35,3 +35,8 @@ def visit_short_url(user)
     puts "Now launching #{matching_long_url.long_url}"
     Launchy.open(matching_long_url.long_url)
 end
+
+def ask_for_long_url
+    puts "Type in your long URL"
+    response = gets.chomp
+end
