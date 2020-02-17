@@ -87,3 +87,11 @@ Loading development environment (Rails 3.2.11)
   Visit Load (0.1ms)  SELECT "visits".* FROM "visits" WHERE "visits"."shortened_url_id" = 1
  => [#<Visit id: 1, user_id: 1, shortened_url_id: 1, created_at: "2013-08-18 19:15:55", updated_at: "2013-08-18 19:15:55">]
 ```
+
+### Phase 5: TagTopic and Tagging
+* Users will be able to choose a set of predefined TagTopics for links (news, music, sports, etc.).
+* no null, uniqueness constraints, seeding database with TagTopics and Taggings
+* tag_topics will have to relate to ShortenedUrl model
+* tag_topics should return all of the tag topics for a given url
+* The relationship between TagTopic and URL is many-to-many, so make join model like Tagging
+* TagTopic#popular_links will return 5 most visited links for that TagTopic along with the number of times each link has been clicked. SQL Query!
