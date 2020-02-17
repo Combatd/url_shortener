@@ -38,6 +38,12 @@ though we can use the launchy gem to pop open the original URL in a browser.
 * #num_uniques
 * #num_recent_uniques
 
+### Phase 3: Tracking Visits
+* To track how many times a shortened URL has been visited and all the shortened URLs the user has visited, we will need a Visit join table model. 
+* This join will link the user visits to specific urls.
+* There will be associations connecting Visit, User, and ShortenedUrl.
+
+
 ### Phase 4: Simple Command Line Interface CLI
 
 The CLI will look something like the following:
