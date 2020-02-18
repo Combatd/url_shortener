@@ -34,11 +34,9 @@ class ShortenedUrl < ApplicationRecord
     end
 
     def self.generate_short_url(user, long_url)
-        ShortenedUrl.create!(
-           submit_user_id: user.id, 
+        ShortenedUrl.create! submit_user_id: user.id, 
            long_url: long_url, 
            short_url: ShortenedUrl.random_code
-        )
     end
 
     def num_clicks

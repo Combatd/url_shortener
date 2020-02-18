@@ -15,7 +15,7 @@ class User < ApplicationRecord
     )
 
     has_many( :visited_urls,
-        -> { DISTINCT },
+        -> { distinct },
         through: :visits,
         source: :short_url
     )
