@@ -51,4 +51,22 @@ class ShortenedUrl < ApplicationRecord
         self.visits.select(:id).distinct.where("visits.updated_at > ?", 10.minutes.ago).count
     end
 
+    def no_spamming
+        submissions = submitter.shortened_urls.where(
+            created_at: 1.minute.ago..Time.now
+        ).count
+
+        if submissions >= 5
+            errors[:base] << "No more than 5 URLs per minute allowed"
+        end
+    end
+
+    def nonpremium_max
+        return if User.find(self.submit_user_id).premium
+
+        if submitter.shortened_urls.count >= 5
+            errors[:user] << "is not premium and has a 5 URL limit"
+        end
+    end
+
 end
