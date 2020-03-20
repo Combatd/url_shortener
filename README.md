@@ -95,3 +95,12 @@ Loading development environment (Rails 3.2.11)
 * tag_topics should return all of the tag topics for a given url
 * The relationship between TagTopic and URL is many-to-many, so make join model like Tagging
 * TagTopic#popular_links will return 5 most visited links for that TagTopic along with the number of times each link has been clicked. SQL Query!
+
+### Phase 6: Custom Validations
+* Users will be prevented from submitting more than 5 URLs a minute.
+* Premium users will have this limit removed!
+
+```ShortenedUrl#no_spamming``` 
+```ShortenedUrl#nonpremium_max```
+These custom validations are defined in the ShortenedUrl model.
+A premium column will be added to the Users table. (Boolean type)
