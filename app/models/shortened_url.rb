@@ -71,11 +71,9 @@ class ShortenedUrl < ApplicationRecord
 
     # ShortenedUrl.prune(minutes)
     def self.prune(minutes)
-        
+        visited = ShortenedUrl.where( :updated_at < minutes.minute && :created_at > 30.minutes.ago )
 
-        if (visited && visited < minutes)
-            
-        end
+        return visited.destroy!
     end
 
 end
