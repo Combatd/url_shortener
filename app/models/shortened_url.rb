@@ -69,4 +69,13 @@ class ShortenedUrl < ApplicationRecord
         end
     end
 
+    # ShortenedUrl.prune(minutes)
+    def self.prune(minutes)
+        
+
+        if (visited && visited < minutes)
+            
+        end
+    end
+
 end
