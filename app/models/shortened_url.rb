@@ -2,8 +2,8 @@ class ShortenedUrl < ApplicationRecord
     validates :submit_user_id, presence: true
     validates :short_url, uniqueness: true
     validates :short_url, presence: true
-    validates :long_url, uniqueness: true
     validates :long_url, presence: true
+    validate :no_spamming, :nonpremium_max
 
     belongs_to(:submitter,
         primary_key: :id,
@@ -18,10 +18,14 @@ class ShortenedUrl < ApplicationRecord
     )
 
     has_many(:visitors,
-        Proc.new { distinct }, #<<<
+        Proc.new { distinct }, 
         through: :visits,
-        source: :visitor
+        source: :user
     )    
+
+    has_many :tag_topics, 
+        through: :taggings, 
+        source: :tag_topic
 
     def self.random_code
         new_url = SecureRandom.urlsafe_base64
@@ -34,9 +38,9 @@ class ShortenedUrl < ApplicationRecord
     end
 
     def self.generate_short_url(user, long_url)
-        ShortenedUrl.create! submit_user_id: user.id, 
+        short_url = ShortenedUrl.create! submit_user_id: user.id, 
            long_url: long_url, 
-           short_url: ShortenedUrl.random_code
+           short_url: self.random_code
     end
 
     def num_clicks
@@ -48,7 +52,10 @@ class ShortenedUrl < ApplicationRecord
     end
 
     def num_recent_uniques
-        self.visits.select(:id).distinct.where("visits.updated_at > ?", 10.minutes.ago).count
+        Visit.distinct.where(
+            shortened_url_id: self.id,
+            created_at: 10.minutes.ago..Time.now
+        ).count(:user_id)
     end
 
     def no_spamming
@@ -71,7 +78,7 @@ class ShortenedUrl < ApplicationRecord
 
     # ShortenedUrl.prune(minutes)
     def self.prune(minutes)
-        visited = ShortenedUrl.where( :updated_at < minutes.minute && :created_at > 30.minutes.ago )
+        visited = ShortenedUrl.where( updated_at < minutes.minutes.ago && created_at > 30.minutes.ago )
 
         return visited.destroy!
     end
